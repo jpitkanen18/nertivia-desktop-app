@@ -79,7 +79,7 @@ const readyEvent = _ => {
     {
       label: 'Quit', click: function () {
         app.isQuiting = true;
-        app.quit();
+        app.quit(0);
       }
     }
   ]);
@@ -208,6 +208,12 @@ function loadMainWindow() {
   mainWindow.webContents.on('new-window', (event, url) => {
     event.preventDefault();
     shell.openExternal(url);
+  });
+
+  mainWindow.on('window-all-closed', () => {
+    // added this line because on exiting, the shortcut could still be called and returning error
+    globalShortcut.unregisterAll();
+    app.quit(0)
   });
 
   ipcMain.on('activity_status:update', (event, programNameArr) => {

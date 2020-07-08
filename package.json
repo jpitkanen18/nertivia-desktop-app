@@ -11,7 +11,7 @@
     "dist-mac": "electron-builder --mac",
     "dist-linux": "electron-builder --linux",
     "publish-win": "electron-builder --win -p always",
-    "publish-macos": "electron-builder --mac -p always -c.mac.identity=null"
+    "publish-macos": "electron-builder --mac  -c.mac.identity=null"
   },
   "license": "ISC",
   "devDependencies": {
